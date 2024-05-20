@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bithumb", "..\Bithumb\Bithu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "..\Test\Test.csproj", "{95C6BAA7-C1C8-4E49-96FB-75EA5025FA8C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coinone", "..\Coinone\Coinone.csproj", "{E180892A-5249-4948-8707-B663698FA23B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{95C6BAA7-C1C8-4E49-96FB-75EA5025FA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C6BAA7-C1C8-4E49-96FB-75EA5025FA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C6BAA7-C1C8-4E49-96FB-75EA5025FA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E180892A-5249-4948-8707-B663698FA23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E180892A-5249-4948-8707-B663698FA23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E180892A-5249-4948-8707-B663698FA23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E180892A-5249-4948-8707-B663698FA23B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

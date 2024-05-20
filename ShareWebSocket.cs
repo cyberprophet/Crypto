@@ -58,6 +58,14 @@ public abstract class ShareWebSocket<Ticker>(string baseUrl) : IDisposable where
         await socket.ConnectAsync(new Uri($"wss://{baseUrl}"), cts.Token);
     }
 
+    public void OnReceiveTicker(string str)
+    {
+        if (Activator.CreateInstance(typeof(Ticker), str) is Ticker ticker)
+        {
+            SendTicker?.Invoke(this, ticker);
+        }
+    }
+
     public void Dispose()
     {
         socket.Dispose();
