@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-using System.Net.WebSockets;
+﻿using System.Net.WebSockets;
 using System.Text;
 
 namespace ShareInvest.Crypto;
@@ -9,38 +7,11 @@ public abstract class ShareWebSocket<Ticker>(string baseUrl) : IDisposable where
 {
     public event EventHandler<Ticker>? SendTicker;
 
+    public abstract Task ReceiveAsync();
+
     public virtual async Task RequestAsync(string json)
     {
         await socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(json)), WebSocketMessageType.Text, true, cts.Token);
-    }
-
-    public virtual async Task ReceiveAsync()
-    {
-        while (WebSocketState.Open == socket.State)
-        {
-            var buffer = new byte[0x400];
-
-            var res = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), cts.Token);
-
-            var str = Encoding.UTF8.GetString(buffer, 0, res.Count);
-
-            if (string.IsNullOrEmpty(str))
-            {
-                continue;
-            }
-            var jToken = JToken.Parse(str);
-
-            if (string.IsNullOrEmpty(jToken.Value<string>("status")))
-            {
-                switch (Activator.CreateInstance(typeof(Ticker), str))
-                {
-                    case Ticker ticker:
-                        SendTicker?.Invoke(this, ticker);
-                        continue;
-                }
-            }
-            Console.WriteLine(jToken);
-        }
     }
 
     /// <summary>
