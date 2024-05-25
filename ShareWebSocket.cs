@@ -1,4 +1,6 @@
-﻿using System.Net.WebSockets;
+﻿using RestSharp;
+
+using System.Net.WebSockets;
 using System.Text;
 
 namespace ShareInvest.Crypto;
@@ -22,7 +24,7 @@ public abstract class ShareWebSocket<Ticker>(string baseUrl) : IDisposable where
     {
         if (string.IsNullOrEmpty(token) is false)
         {
-            socket.Options.SetRequestHeader("Authorization", $"Bearer {token}");
+            socket.Options.SetRequestHeader(KnownHeaders.Authorization, $"Bearer {token}");
         }
         socket.Options.KeepAliveInterval = interval ?? TimeSpan.MinValue;
 
